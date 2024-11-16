@@ -183,6 +183,8 @@ if st.button("Get Calendar Events"):
 if st.button("Add One Event"):
     add_one_event()
 
+
+xxx="""
 # Calendar inputs
 st.header("Create Calendar Event")
 event_title = st.text_input("Event Title")
@@ -194,5 +196,5 @@ attendee_email = st.text_input("Attendee Email","amitamit@gmail.com")
 # Submit button for calendar
 if st.button("Add to Calendar"):
     add_to_google_calendar(event_title, start_time, end_time,attendee_email)
-
+"""
 
