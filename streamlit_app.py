@@ -2,6 +2,7 @@ import streamlit as st
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 import datetime
+from google.oauth2.service_account import Credentials
 
 def get_calendar_service():
     # Path to your service account JSON key
@@ -25,7 +26,7 @@ def get_calendar_events(event_count=10):
         service = get_calendar_service()
 
         # Call the Calendar API
-        now = datetime.datetime.now(datetime.timezone.utc).isoformat() + "Z"  # 'Z' indicates UTC time
+        now = datetime.datetime.utcnow().isoformat() + "Z"  # 'Z' indicates UTC time
         st.write(f"IN get-calendar-events, now: {now}")
         events_result = (
             service.events()
@@ -75,7 +76,7 @@ def add_event_to_calendar(event_title, start_time, end_time, attendee_email):
                 "dateTime": end_time,
                 "timeZone": "UTC"
             },
-            "attendees": [{"email": attendee_email}]
+            #"attendees": [{"email": attendee_email}]
         }
 
         # Insert the event
